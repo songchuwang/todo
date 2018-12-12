@@ -1,0 +1,16 @@
+# 规范编辑器的配置，因为编辑器IDE有非常多，每个都有很大不同的配置
+
+# 读editorconfig读到这个文件就可以了，不用再往上层查找了
+root = true
+
+# 给所有文件指定规则
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+# 保存文件时，自动加上一个空行
+insert_final_newline = true
+# 去除一行末尾多余的空格
+trim_trailing_whitespace = true
+

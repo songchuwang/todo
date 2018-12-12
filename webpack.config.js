@@ -19,9 +19,18 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
+      // 使用eslint自动检测代码
+      {
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        // 预处理
+        enforce:'pre'
+
+      },
       {
         test:/\.jsx$/,
-        loader:'babel-loader'
+        loader:'babel-loader',
+        exclude:/node_modules/
       },
       {
         test: /\.css$/,
@@ -72,7 +81,7 @@ if (isDev) {
   config.module.rules.push({
       test: /\.styl$/,
       use: [
-        'style-loader',
+        'vue-style-loader',
         'css-loader',
         {
           // 使用stylus-loader会生产sourceMap，而postcss-loader也会生成sourceMap
@@ -115,7 +124,7 @@ if (isDev) {
       use: ExtractPlugin.extract({
         // 把css-loader处理出来的内容，在外面包了一层js代码，用于把css代码写入html里面
         // (生成一个style标签并将其插入html里，将css代码插入style里)
-        fallback:'style-loader',
+        fallback:'vue-style-loader',
         use:[
           'css-loader',
           {
